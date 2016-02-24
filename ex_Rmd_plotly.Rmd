@@ -1,0 +1,67 @@
+---
+title: "Markdown and Plotly"
+author: "BGR"
+date: "February 18, 2016"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+# Sample markdown
+test code: 
+
+```{r pressure, echo=TRUE, message = FALSE}
+source("GetYahooData.R")
+ 
+AAPL <-  GetYahooData("AAPL")
+IBM <- GetYahooData("IBM")
+ 
+# Plotly chart 
+library(plotly)
+mat <-  data.frame(Date = AAPL$Date, 
+                   AAPL = round(AAPL$Adj.Close,2),
+                   IBM = round(IBM$Adj.Close,2))
+
+p <- mat %>% 
+  plot_ly(x = Date, y = AAPL, fill = "tozeroy", name = "Microsoft") %>% 
+  add_trace(y = IBM, fill = "tonexty", name = "IBM") %>% 
+  layout(title = "Stock Prices", 
+         xaxis = list(title = "Time"),
+         yaxis = list(title = "Stock Prices"))
+p  # Thats it !
+```
+
+Note that the `echo = FALSE / TRUE` parameter was added to the code chunk to prevent OR NOT printing of the R code that generated the plot.
+
+```{r Code Chunk, fig.width = 2, fig.height = 2}
+df <- diamonds[sample(1:nrow(diamonds), size = 2000),]
+ 
+plot_ly(df, x = x, y = price, mode = "markers", color = cut, size = z) %>%
+layout(title = "Diamonds")
+```
+
+```{r BIG , fig.width = 8, fig.height = 8}
+df <- diamonds[sample(1:nrow(diamonds), size = 2000),]
+ 
+plot_ly(df, x = x, y = price, mode = "markers", color = cut, size = z) %>%
+layout(title = "Diamonds")
+```
+
+```{r ALIGN, fig.align = 'right'}
+df <- diamonds[sample(1:nrow(diamonds), size = 2000),]
+ 
+plot_ly(df, x = x, y = price, mode = "markers", color = cut, size = z) %>%
+layout(title = "Diamonds")
+```
+
+
+# <iframe> allows Plotly charts available in your Plotly account to be embedded in a R-Markdown document. 
+# <iframe width="600" height="400" frameborder="0" scrolling="no" src="https://plot.ly/~riddhiman/47.embed"></iframe> 

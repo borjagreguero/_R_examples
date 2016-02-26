@@ -1,0 +1,4 @@
+# SOME BASIC PLOTS
+# 
+# https://2780fa3c-a-62cb3a1a-s-sites.googlegroups.com/site/rdatamining/docs/RDataMining-slides-data-exploration-visualization.pdf?attachauth=ANoY7coMZjqXYuBQkhQNw4GLLM-qh1M-CMjQiKrotsbOdm0Zp26u_oNKYey2XKWtZ1YQaUgVlQ0ywK14fmTVyY4Aw3VBuRKpeMdB59aXVFGOGqliajmeDKzOcSfwMYo0aLsyTT3FUQNzhM53nOQSsGPreieQjQnUyQZoz52DrwvhWu9yMw3AzfTJf33nyo0WE2CLNzIDU0JE67BAP-62hAyz_eQUTkDC9ZppUEibRhrZ_jm4ciommBG5pWs96wSFbLw_qIHUH1bE7fEzy4PFIQnD7fP0rmpdcQ%3D%3D&attredirects=0
+# Variance and Histogram

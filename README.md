@@ -14,9 +14,11 @@ Note that they are focused on my fields of work and applications.
 - ex_corrplot_pkg - calls and plots of correlation matrix from the corrplot package 
 - ex_heatmaps - advanced data operations and heatmaps plots 
 - ex_Intervals - to create intervals as in GIS with Jenk´s algorithm
+- ex_plotly - example of plotly calls 
 - ex_qplot - examples to use qplot 
 - ex_rchart - cool tables and plots in rchart - java-like 
 - ex_spatial_extract_from_raster_by_polygon  - read raster, extract in one mask and plot rasters 
+- export_data - examples of how to export data: ascii, xls, etc.  
 - how_to_evaluate_machLearning_algorithms - blog on how to evaluate and compare algorithms 
 - use_dplyr_and_datatables - how to use dplyr and data.tables for advanced handling of data frames 
 

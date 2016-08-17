@@ -1,4 +1,5 @@
 # animated hurricane data traccks 
+setwd("~/R_work")
 # https://gist.github.com/hrbrmstr/23bf06784e898871dd61#file-animatedhurricanetracks-r
 #library(maps)
 library(data.table)
@@ -129,15 +130,15 @@ for (year in unique(storms$Year)) { # loop for years
     gg <- base
     gg <- gg + geom_path(data=storms_yr,
                          aes(x=Longitude, y=Latitude, group=ID, colour=Wind.kt),
-                         size=1.0, alpha=1/4)
-    gg <- gg + geom_text(label=year, aes(x=-110, y=50), size=rel(5), color="white", vjust=1)
+                         size=2.0, alpha=2/4)
+    gg <- gg + geom_text(label=year, aes(x=-108, y=50), size=rel(7), color="white", vjust=1)
     gg <- gg + geom_text(label=paste(gsub(".[[:digit:]]+$", "", storm_ids[1:i]), collapse="\n"),
-                         aes(x=-135, y=49.5), size=rel(4.5), color="white", vjust=1)
+                         aes(x=-108, y=48), size=rel(4.5), color="white", vjust=1,hjust=0)
     
     # change "quartz" to "cairo" if you're not on OS X
     # gg 
     png(filename=sprintf("./output/%s%03d.png", year, i),
-        width=1020, height=800, type="quartz", bg="gray25")
+        width=1020, height=800, type="cairo", bg="gray25")
     print(gg)
     dev.off()
   }
@@ -156,10 +157,20 @@ system("convert -delay 8 output/*png output/hurr-1.mp4")
 # accumulate all the tracks.
 
 gg <- base
-
+#lagy <- lagx <-  0 # to move text around
+x0 <- -108; y0 <- 50; # initial coordinates for text 
 for (year in unique(storms$Year)) {
   
+  print(year) 
   storm_ids <- unique(storms[storms$Year==year,]$ID)
+  
+  #x0 <- x0+lagx; 
+  #gg <- gg + geom_text(label=year, aes(x=x0, y=y0), size=rel(7), color="white") #, vjust=1,,hjust=0)
+  #y0 <- y0+lagy
+  #lagy <- lagy-2
+  #if (y0<30) {
+  #  lagx  <- lagx +2; y0 <- -50
+  #} # reset position of text 
   
   for (i in 1:length(storm_ids)) {
     
@@ -169,11 +180,14 @@ for (year in unique(storms$Year)) {
 
     gg <- gg + geom_path(data=storms_yr,
                          aes(x=Longitude, y=Latitude, group=ID, colour=Wind.kt),
-                         size=1.0, alpha=1/4)
-
+                         size=1.4, alpha=1/4,linejoin = "round")
+    gg1 <-  gg + geom_text(label=year, aes(x=-108, y=50), size=rel(7), color="white", vjust=1,
+                         inherit.aes = FALSE,check_overlap = T)
+    #gg <- gg + ggtitle(storms_yr)
+    
     png(filename=sprintf("./output2/%s%03d.png", year, i),
-        width=1020, height=800, type="quartz", bg="gray25")
-    print(gg)
+        width=1020, height=800, type="cairo", bg="gray25")
+    print(gg1)
     dev.off()
   }
 }

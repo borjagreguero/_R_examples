@@ -80,4 +80,5 @@ theme_opts <- list(theme(panel.grid.minor = element_blank(),
 ggplot(lf) + geom_polygon(aes(long, lat, group = group, fill = Anxiety)) +
         theme_opts + 
         xlab("Easting (m)") + ylab("Northing (m)") 
+ggsave("maps/map3.png", width=12.5, height=8.25, dpi=72) 
 

@@ -72,6 +72,16 @@ motion_graph <-gvisMotionChart(development_motion,
 plot(motion_graph)
 
 ####### GOOGLEVIS / INTERLUDE 
+# Update the interactive motion chart
+motion_graph <- gvisMotionChart(development_motion,
+                                idvar = "Country",
+                                timevar = "Year",
+                                xvar = ___,
+                                ___,
+                                ___)
+
+# Plot motion_graph
+plot(motion_graph)
 
 ###### GOOGLEVIS / FINAL OUTPUT 
 
